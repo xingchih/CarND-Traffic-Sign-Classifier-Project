@@ -1031,39 +1031,39 @@ body .markdown-body
 <hr />
 <h3 id="writeup-readme"><a name="user-content-writeup-readme" href="#writeup-readme" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Writeup / README</h3>
 <h4 id="1-provide-a-writeup-readme-that-includes-all-the-rubric-points-and-how-you-addressed-each-one-you-can-submit-your-writeup-as-markdown-or-pdf-you-can-use-this-template-as-a-guide-for-writing-the-report-the-submission-includes-the-project-code"><a name="user-content-1-provide-a-writeup-readme-that-includes-all-the-rubric-points-and-how-you-addressed-each-one-you-can-submit-your-writeup-as-markdown-or-pdf-you-can-use-this-template-as-a-guide-for-writing-the-report-the-submission-includes-the-project-code" href="#1-provide-a-writeup-readme-that-includes-all-the-rubric-points-and-how-you-addressed-each-one-you-can-submit-your-writeup-as-markdown-or-pdf-you-can-use-this-template-as-a-guide-for-writing-the-report-the-submission-includes-the-project-code" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.</h4>
-<p>You&rsquo;re reading it! and here is a link to my <a href="https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb">project code</a></p>
+<p>You&rsquo;re reading it! and here is a link to my <a href="https://github.com/xingchih/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb">project code</a> on GitHub</p>
 <h3 id="data-set-summary-exploration"><a name="user-content-data-set-summary-exploration" href="#data-set-summary-exploration" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Data Set Summary &amp; Exploration</h3>
 <h4 id="1-provide-a-basic-summary-of-the-data-set-and-identify-where-in-your-code-the-summary-was-done-in-the-code-the-analysis-should-be-done-using-python-numpy-andor-pandas-methods-rather-than-hardcoding-results-manually"><a name="user-content-1-provide-a-basic-summary-of-the-data-set-and-identify-where-in-your-code-the-summary-was-done-in-the-code-the-analysis-should-be-done-using-python-numpy-andor-pandas-methods-rather-than-hardcoding-results-manually" href="#1-provide-a-basic-summary-of-the-data-set-and-identify-where-in-your-code-the-summary-was-done-in-the-code-the-analysis-should-be-done-using-python-numpy-andor-pandas-methods-rather-than-hardcoding-results-manually" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Provide a basic summary of the data set and identify where in your code the summary was done. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.</h4>
-<p>The code for this step is contained in the second code cell of the IPython notebook.  </p>
+<p>The code for this step is contained in the code cell #4 of the IPython notebook.  </p>
 <p>I used the pandas library to calculate summary statistics of the traffic<br />
 signs data set:</p>
 <ul>
 <li>The size of training set is 34799</li>
+<li>The size of validation set is 4410</li>
 <li>The size of test set is 12630</li>
 <li>The shape of a traffic sign image is 32x32x3 (RGB)</li>
 <li>The number of unique classes/labels in the data set is 43</li>
 </ul>
+<p>This is just providing the raw metrics of the data set. The actual validation dataset I used is actually randomly splitted from the training data set. See the following section for more details.</p>
 <h4 id="2-include-an-exploratory-visualization-of-the-dataset-and-identify-where-the-code-is-in-your-code-file"><a name="user-content-2-include-an-exploratory-visualization-of-the-dataset-and-identify-where-the-code-is-in-your-code-file" href="#2-include-an-exploratory-visualization-of-the-dataset-and-identify-where-the-code-is-in-your-code-file" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Include an exploratory visualization of the dataset and identify where the code is in your code file.</h4>
-<p>The code for this step is contained in the third code cell of the IPython notebook.  </p>
-<p>Here is an exploratory visualization of the data set. It is a bar chart showing how the data &hellip;</p>
-<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/Report_Images/TrainingDataHist.png" title="Visualization" /></p>
+<p>The code for this step is contained in the code cell #7-9 of the IPython notebook.  </p>
+<p>Here is an exploratory visualization of the data set. I generated the histograms of the traning, validation, and test sets:</p>
+<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/Report_Images/TrainingDataHist.png" title="Hist Training" /></p>
+<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/Report_Images/ValidationDataHist.png" title="Hist Validation" /></p>
+<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/Report_Images/TestDataHist.png" title="Hist Test" /></p>
+<p>It is quite obvious that our data sets are not evenly distributed. This raises a questions whether this distribution matches roughtly what we expect in the real world or it is introducing artificial biasing due to data colletion.</p>
 <h3 id="design-and-test-a-model-architecture"><a name="user-content-design-and-test-a-model-architecture" href="#design-and-test-a-model-architecture" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Design and Test a Model Architecture</h3>
 <h4 id="1-describe-how-and-identify-where-in-your-code-you-preprocessed-the-image-data-what-tecniques-were-chosen-and-why-did-you-choose-these-techniques-consider-including-images-showing-the-output-of-each-preprocessing-technique-pre-processing-refers-to-techniques-such-as-converting-to-grayscale-normalization-etc"><a name="user-content-1-describe-how-and-identify-where-in-your-code-you-preprocessed-the-image-data-what-tecniques-were-chosen-and-why-did-you-choose-these-techniques-consider-including-images-showing-the-output-of-each-preprocessing-technique-pre-processing-refers-to-techniques-such-as-converting-to-grayscale-normalization-etc" href="#1-describe-how-and-identify-where-in-your-code-you-preprocessed-the-image-data-what-tecniques-were-chosen-and-why-did-you-choose-these-techniques-consider-including-images-showing-the-output-of-each-preprocessing-technique-pre-processing-refers-to-techniques-such-as-converting-to-grayscale-normalization-etc" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.</h4>
-<p>The code for this step is contained in the fourth code cell of the IPython notebook.</p>
-<p>As a first step, I decided to convert the images to grayscale because &hellip;</p>
+<p>The code for this step is contained in the code cell 11-13 of the IPython notebook.</p>
+<p>I experimented with grayscaling and normalizaion. It seems that grayscaling did help to improve the accuracy in training, while normalization has very marginal effect. Therefore I only kept grayscaling and commented out normalization.</p>
 <p>Here is an example of a traffic sign image before and after grayscaling.</p>
-<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/examples/grayscale.jpg" title="Grayscaling" /></p>
-<p>As a last step, I normalized the image data because &hellip;</p>
+<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/Report_Images/grayscale_train1.png" title="Grayscaling" /></p>
 <h4 id="2-describe-how-and-identify-where-in-your-code-you-set-up-training-validation-and-testing-data-how-much-data-was-in-each-set-explain-what-techniques-were-used-to-split-the-data-into-these-sets-optional-as-described-in-the-stand-out-suggestions-part-of-the-rubric-if-you-generated-additional-data-for-training-describe-why-you-decided-to-generate-additional-data-how-you-generated-the-data-identify-where-in-your-code-and-provide-example-images-of-the-additional-data"><a name="user-content-2-describe-how-and-identify-where-in-your-code-you-set-up-training-validation-and-testing-data-how-much-data-was-in-each-set-explain-what-techniques-were-used-to-split-the-data-into-these-sets-optional-as-described-in-the-stand-out-suggestions-part-of-the-rubric-if-you-generated-additional-data-for-training-describe-why-you-decided-to-generate-additional-data-how-you-generated-the-data-identify-where-in-your-code-and-provide-example-images-of-the-additional-data" href="#2-describe-how-and-identify-where-in-your-code-you-set-up-training-validation-and-testing-data-how-much-data-was-in-each-set-explain-what-techniques-were-used-to-split-the-data-into-these-sets-optional-as-described-in-the-stand-out-suggestions-part-of-the-rubric-if-you-generated-additional-data-for-training-describe-why-you-decided-to-generate-additional-data-how-you-generated-the-data-identify-where-in-your-code-and-provide-example-images-of-the-additional-data" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the &ldquo;Stand Out Suggestions&rdquo; part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)</h4>
-<p>The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  </p>
-<p>To cross validate my model, I randomly split the training data into a training set and validation set. I did this by &hellip;</p>
-<p>My final training set had X number of images. My validation set and test set had Y and Z number of images.</p>
-<p>The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because &hellip; To add more data to the the data set, I used the following techniques because &hellip; </p>
-<p>Here is an example of an original image and an augmented image:</p>
-<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/examples/random_noise.jpg" title="Random Noise" /></p>
-<p>The difference between the original data set and the augmented data set is the following &hellip; </p>
+<p>The code for splitting the data into training and validation sets is contained in the code cell 15 of the IPython notebook.  </p>
+<p>To cross validate my model, I randomly split the training data into a training set and validation set. I did this by using train_test_split from sklearn.model_selection</p>
+<p>My final training set had 27839 number of images. My validation set and test set had 6960 and 12630 number of images.</p>
 <h4 id="3-describe-and-identify-where-in-your-code-what-your-final-model-architecture-looks-like-including-model-type-layers-layer-sizes-connectivity-etc-consider-including-a-diagram-andor-table-describing-the-final-model"><a name="user-content-3-describe-and-identify-where-in-your-code-what-your-final-model-architecture-looks-like-including-model-type-layers-layer-sizes-connectivity-etc-consider-including-a-diagram-andor-table-describing-the-final-model" href="#3-describe-and-identify-where-in-your-code-what-your-final-model-architecture-looks-like-including-model-type-layers-layer-sizes-connectivity-etc-consider-including-a-diagram-andor-table-describing-the-final-model" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.</h4>
-<p>The code for my final model is located in the seventh cell of the ipython notebook. </p>
+<p>The code for my final model is located in the cell #19 of the ipython notebook. </p>
 <p>My final model consisted of the following layers:</p>
 <table>
 <thead>
@@ -1075,11 +1075,11 @@ signs data set:</p>
 <tbody>
 <tr>
 <td align="center">Input</td>
-<td align="center">32x32x3 RGB image</td>
+<td align="center">32x32x1 grayscale image</td>
 </tr>
 <tr>
-<td align="center">Convolution 3x3</td>
-<td align="center">1x1 stride, same padding, outputs 32x32x64</td>
+<td align="center">Convolution 5x5</td>
+<td align="center">1x1 stride, valid padding, outputs 28x28x6</td>
 </tr>
 <tr>
 <td align="center">RELU</td>
@@ -1087,119 +1087,197 @@ signs data set:</p>
 </tr>
 <tr>
 <td align="center">Max pooling</td>
-<td align="center">2x2 stride,  outputs 16x16x64</td>
+<td align="center">2x2 stride,  outputs 14x14x6</td>
 </tr>
 <tr>
-<td align="center">Convolution 3x3</td>
-<td align="center">etc.</td>
+<td align="center">Convolution 5x5</td>
+<td align="center">1x1 stride, valid padding, outputs 10x10x16</td>
+</tr>
+<tr>
+<td align="center">RELU</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Max pooling</td>
+<td align="center">2x2 stride,  outputs 5x5x16</td>
+</tr>
+<tr>
+<td align="center">Flatten</td>
+<td align="center">Outputs 400</td>
 </tr>
 <tr>
 <td align="center">Fully connected</td>
-<td align="center">etc.</td>
+<td align="center">Outputs 120</td>
+</tr>
+<tr>
+<td align="center">Fully connected</td>
+<td align="center">Outputs 84</td>
+</tr>
+<tr>
+<td align="center">Fully connected</td>
+<td align="center">Outputs 43</td>
 </tr>
 <tr>
 <td align="center">Softmax</td>
-<td align="center">etc.</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center"></td>
 <td align="center"></td>
 </tr>
 </tbody>
 </table>
 <h4 id="4-describe-how-and-identify-where-in-your-code-you-trained-your-model-the-discussion-can-include-the-type-of-optimizer-the-batch-size-number-of-epochs-and-any-hyperparameters-such-as-learning-rate"><a name="user-content-4-describe-how-and-identify-where-in-your-code-you-trained-your-model-the-discussion-can-include-the-type-of-optimizer-the-batch-size-number-of-epochs-and-any-hyperparameters-such-as-learning-rate" href="#4-describe-how-and-identify-where-in-your-code-you-trained-your-model-the-discussion-can-include-the-type-of-optimizer-the-batch-size-number-of-epochs-and-any-hyperparameters-such-as-learning-rate" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.</h4>
-<p>The code for training the model is located in the eigth cell of the ipython notebook. </p>
-<p>To train the model, I used an ....</p>
+<p>The code for training the model is located in the cell 22-27 of the ipython notebook. </p>
+<p>To train the model, I used the AdamOptimizer, batch size of 256, learning rate of 0.001 and 35 epochs. I experimented with various batch size, learning rate and number of epochs and this set is among the best performing ones without very large epoch numbers. I also tried different sigma for initializing the weights and determined 0.05 is a relatively good number. The training accuracy reaches above 99% within 35 epochs.</p>
 <h4 id="5-describe-the-approach-taken-for-finding-a-solution-include-in-the-discussion-the-results-on-the-training-validation-and-test-sets-and-where-in-the-code-these-were-calculated-your-approach-may-have-been-an-iterative-process-in-which-case-outline-the-steps-you-took-to-get-to-the-final-solution-and-why-you-chose-those-steps-perhaps-your-solution-involved-an-already-well-known-implementation-or-architecture-in-this-case-discuss-why-you-think-the-architecture-is-suitable-for-the-current-problem"><a name="user-content-5-describe-the-approach-taken-for-finding-a-solution-include-in-the-discussion-the-results-on-the-training-validation-and-test-sets-and-where-in-the-code-these-were-calculated-your-approach-may-have-been-an-iterative-process-in-which-case-outline-the-steps-you-took-to-get-to-the-final-solution-and-why-you-chose-those-steps-perhaps-your-solution-involved-an-already-well-known-implementation-or-architecture-in-this-case-discuss-why-you-think-the-architecture-is-suitable-for-the-current-problem" href="#5-describe-the-approach-taken-for-finding-a-solution-include-in-the-discussion-the-results-on-the-training-validation-and-test-sets-and-where-in-the-code-these-were-calculated-your-approach-may-have-been-an-iterative-process-in-which-case-outline-the-steps-you-took-to-get-to-the-final-solution-and-why-you-chose-those-steps-perhaps-your-solution-involved-an-already-well-known-implementation-or-architecture-in-this-case-discuss-why-you-think-the-architecture-is-suitable-for-the-current-problem" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.</h4>
-<p>The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.</p>
+<p>The code for calculating the accuracy of the model is located in the cell #28 of the Ipython notebook.</p>
 <p>My final model results were:<br />
-<em> training set accuracy of ?<br />
-</em> validation set accuracy of ? <br />
-* test set accuracy of ?</p>
-<p>If an iterative approach was chosen:<br />
-<em> What was the first architecture that was tried and why was it chosen?<br />
-</em> What were some problems with the initial architecture?<br />
-<em> How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.<br />
-</em> Which parameters were tuned? How were they adjusted and why?<br />
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?</p>
-<p>If a well known architecture was chosen:<br />
-<em> What architecture was chosen?<br />
-</em> Why did you believe it would be relevant to the traffic sign application?<br />
-* How does the final model&rsquo;s accuracy on the training, validation and test set provide evidence that the model is working well?</p>
+<em> training set accuracy of 99.7%<br />
+</em> validation set accuracy of 98.4%<br />
+* test set accuracy of 91.3%</p>
+<p>I chose LeNet because it seems to perform well enough for this task. The training and validation accuracy is very high while the test accuracy is still acceptable (above 91%). </p>
+<p>I experimented with various batch size, learning rate and number of epochs and this set is among the best performing ones without very large epoch numbers. I also tried different sigma for initializing the weights and determined 0.05 is a relatively good number. </p>
+<p>I also added dropouts to see its effect. Either adding dropout layers after maxpooling of the convolutional layers or after the fully connected layers. Unfortunately it did not help with improving accuracy. In both cases, the training, validation, and test accuracies all dropped with some extent.</p>
+<p>The final traning and validation accuracies are both high and are pretty close, within about 1% difference, which indicates good fitting. </p>
 <h3 id="test-a-model-on-new-images"><a name="user-content-test-a-model-on-new-images" href="#test-a-model-on-new-images" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Test a Model on New Images</h3>
 <h4 id="1-choose-five-german-traffic-signs-found-on-the-web-and-provide-them-in-the-report-for-each-image-discuss-what-quality-or-qualities-might-be-difficult-to-classify"><a name="user-content-1-choose-five-german-traffic-signs-found-on-the-web-and-provide-them-in-the-report-for-each-image-discuss-what-quality-or-qualities-might-be-difficult-to-classify" href="#1-choose-five-german-traffic-signs-found-on-the-web-and-provide-them-in-the-report-for-each-image-discuss-what-quality-or-qualities-might-be-difficult-to-classify" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.</h4>
 <p>Here are five German traffic signs that I found on the web:</p>
-<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/examples/placeholder.png" title="Traffic Sign 1" /> <img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/examples/placeholder.png" title="Traffic Sign 2" /> <img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/examples/placeholder.png" title="Traffic Sign 3" /> <br />
-<img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/examples/placeholder.png" title="Traffic Sign 4" /> <img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/examples/placeholder.png" title="Traffic Sign 5" /></p>
+<p><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/pedestrians.jpg" title="Traffic Sign 1" /> <img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/priority_road.jpg" title="Traffic Sign 5" /> <img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_30.jpg" title="Traffic Sign 2" /> <img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/turn_right_ahead.jpg" title="Traffic Sign 4" /><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_50.jpg" title="Traffic Sign 3" /> </p>
 <p>The first image might be difficult to classify because &hellip;</p>
 <h4 id="2-discuss-the-models-predictions-on-these-new-traffic-signs-and-compare-the-results-to-predicting-on-the-test-set-identify-where-in-your-code-predictions-were-made-at-a-minimum-discuss-what-the-predictions-were-the-accuracy-on-these-new-predictions-and-compare-the-accuracy-to-the-accuracy-on-the-test-set-optional-discuss-the-results-in-more-detail-as-described-in-the-stand-out-suggestions-part-of-the-rubric"><a name="user-content-2-discuss-the-models-predictions-on-these-new-traffic-signs-and-compare-the-results-to-predicting-on-the-test-set-identify-where-in-your-code-predictions-were-made-at-a-minimum-discuss-what-the-predictions-were-the-accuracy-on-these-new-predictions-and-compare-the-accuracy-to-the-accuracy-on-the-test-set-optional-discuss-the-results-in-more-detail-as-described-in-the-stand-out-suggestions-part-of-the-rubric" href="#2-discuss-the-models-predictions-on-these-new-traffic-signs-and-compare-the-results-to-predicting-on-the-test-set-identify-where-in-your-code-predictions-were-made-at-a-minimum-discuss-what-the-predictions-were-the-accuracy-on-these-new-predictions-and-compare-the-accuracy-to-the-accuracy-on-the-test-set-optional-discuss-the-results-in-more-detail-as-described-in-the-stand-out-suggestions-part-of-the-rubric" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Discuss the model&rsquo;s predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the &ldquo;Stand Out Suggestions&rdquo; part of the rubric).</h4>
-<p>The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.</p>
+<p>The code for making predictions on my final model is located in the cell 30-33 of the Ipython notebook.</p>
 <p>Here are the results of the prediction:</p>
 <table>
 <thead>
 <tr>
 <th align="center">Image</th>
+<th align="center">Grundtruth</th>
 <th align="center">Prediction</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Stop Sign</td>
-<td align="center">Stop sign</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/pedestrians.jpg" title="Traffic Sign 1" /></td>
+<td align="center">Pedestrians</td>
+<td align="center">Pedestrians</td>
 </tr>
 <tr>
-<td align="center">U-turn</td>
-<td align="center">U-turn</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/priority_road.jpg" title="Traffic Sign 5" /></td>
+<td align="center">Priority road</td>
+<td align="center">Priority road</td>
 </tr>
 <tr>
-<td align="center">Yield</td>
-<td align="center">Yield</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_30.jpg" title="Traffic Sign 2" /></td>
+<td align="center">Speed limit 30</td>
+<td align="center">Speed limit 30</td>
 </tr>
 <tr>
-<td align="center">100 km/h</td>
-<td align="center">Bumpy Road</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/turn_right_ahead.jpg" title="Traffic Sign 4" /></td>
+<td align="center">Turn right ahead</td>
+<td align="center">Turn right ahead</td>
 </tr>
 <tr>
-<td align="center">Slippery Road</td>
-<td align="center">Slippery Road</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_50.jpg" title="Traffic Sign 3" /></td>
+<td align="center">Speed limit 30</td>
+<td align="center">Speed limit 50</td>
 </tr>
 </tbody>
 </table>
-<p>The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of &hellip;</p>
+<p>The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 91.3%.</p>
 <h4 id="3-describe-how-certain-the-model-is-when-predicting-on-each-of-the-five-new-images-by-looking-at-the-softmax-probabilities-for-each-prediction-and-identify-where-in-your-code-softmax-probabilities-were-outputted-provide-the-top-5-softmax-probabilities-for-each-image-along-with-the-sign-type-of-each-probability-optional-as-described-in-the-stand-out-suggestions-part-of-the-rubric-visualizations-can-also-be-provided-such-as-bar-charts"><a name="user-content-3-describe-how-certain-the-model-is-when-predicting-on-each-of-the-five-new-images-by-looking-at-the-softmax-probabilities-for-each-prediction-and-identify-where-in-your-code-softmax-probabilities-were-outputted-provide-the-top-5-softmax-probabilities-for-each-image-along-with-the-sign-type-of-each-probability-optional-as-described-in-the-stand-out-suggestions-part-of-the-rubric-visualizations-can-also-be-provided-such-as-bar-charts" href="#3-describe-how-certain-the-model-is-when-predicting-on-each-of-the-five-new-images-by-looking-at-the-softmax-probabilities-for-each-prediction-and-identify-where-in-your-code-softmax-probabilities-were-outputted-provide-the-top-5-softmax-probabilities-for-each-image-along-with-the-sign-type-of-each-probability-optional-as-described-in-the-stand-out-suggestions-part-of-the-rubric-visualizations-can-also-be-provided-such-as-bar-charts" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the &ldquo;Stand Out Suggestions&rdquo; part of the rubric, visualizations can also be provided such as bar charts)</h4>
-<p>The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.</p>
-<p>For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were</p>
+<p>The code for making predictions on my final model is located in the cell #33 of the Ipython notebook.</p>
+<p>The model is highly certain about the first three images(100% probabliity). The sign of turn right ahead is also predicted with a high probability of 99.6%. Only the speed limit of 50 has a lower prediction probability of 93.1%, but still above the test accuracy.</p>
 <table>
 <thead>
 <tr>
+<th align="center">Image</th>
 <th align="center">Probability</th>
 <th align="center">Prediction</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">.60</td>
-<td align="center">Stop sign</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/pedestrians.jpg" title="Traffic Sign 1" /></td>
+<td align="center">100.0%</td>
+<td align="center">Pedestrians</td>
 </tr>
 <tr>
-<td align="center">.20</td>
-<td align="center">U-turn</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/priority_road.jpg" title="Traffic Sign 5" /></td>
+<td align="center">100.0%</td>
+<td align="center">Priority road</td>
 </tr>
 <tr>
-<td align="center">.05</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_30.jpg" title="Traffic Sign 2" /></td>
+<td align="center">100.0%</td>
+<td align="center">Speed limit 30</td>
+</tr>
+<tr>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/turn_right_ahead.jpg" title="Traffic Sign 4" /></td>
+<td align="center">99.6%</td>
+<td align="center">Turn right ahead</td>
+</tr>
+<tr>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_50.jpg" title="Traffic Sign 3" /></td>
+<td align="center">93.1%</td>
+<td align="center">Speed limit 50</td>
+</tr>
+</tbody>
+</table>
+<p>The table below illustrates the top 5 softmax outputs. The #2-#5 guesses of each sign are all with very low probability, close to zero for all other guesses for the first four images. Only Speed limit 30km/h had 6.92% probably for the last image (Speed limit 50 km/h). </p>
+<table>
+<thead>
+<tr>
+<th align="center">Image</th>
+<th align="center">Prediction</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_50.jpg" title="Traffic Sign 3" /></td>
+<td align="center">Pedestrians</td>
+<td align="center">Pedestrians</td>
+<td align="center">General caution</td>
+<td align="center">Roundabout mandatory</td>
+<td align="center">Traffic signals</td>
+<td align="center">Right-of-way at the next intersection</td>
+</tr>
+<tr>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/priority_road.jpg" title="Traffic Sign 5" /></td>
+<td align="center">Priority road</td>
+<td align="center">Priority road</td>
+<td align="center">Roundabout mandatory</td>
+<td align="center">Right-of-way at the next intersection</td>
+<td align="center">Speed limit (100km/h)</td>
+<td align="center">No passing for vehicles over 3.5 metric tons</td>
+</tr>
+<tr>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_30.jpg" title="Traffic Sign 2" /></td>
+<td align="center">Speed limit 30</td>
+<td align="center">Speed limit 30</td>
 <td align="center">Yield</td>
+<td align="center">Speed limit (70km/h)</td>
+<td align="center">Speed limit (50km/h)</td>
+<td align="center">Keep left</td>
 </tr>
 <tr>
-<td align="center">.04</td>
-<td align="center">Bumpy Road</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/turn_right_ahead.jpg" title="Traffic Sign 4" /></td>
+<td align="center">Turn right ahead</td>
+<td align="center">Turn right ahead</td>
+<td align="center">Traffic signals</td>
+<td align="center">General caution</td>
+<td align="center">Speed limit (70km/h)</td>
+<td align="center">Keep left</td>
 </tr>
 <tr>
-<td align="center">.01</td>
-<td align="center">Slippery Road</td>
+<td align="center"><img alt="alt text" src="/Users/xingchihe/Documents/udacity/CarND/Term1/CarND-Traffic-Sign-Classifier-Project/German_Traffic_Signs/speed_limit_50.jpg" title="Traffic Sign 3" /></td>
+<td align="center">Speed limit 50</td>
+<td align="center">Speed limit 50</td>
+<td align="center">Speed limit (30km/h)</td>
+<td align="center">Speed limit (80km/h)</td>
+<td align="center">Speed limit (20km/h)</td>
+<td align="center">Speed limit (70km/h)</td>
 </tr>
 </tbody>
 </table>
